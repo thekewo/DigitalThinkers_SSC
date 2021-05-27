@@ -15,7 +15,7 @@ namespace DigitalThinkers_SSC.Controllers
     public class V1Controller : ControllerBase
     {
         private readonly StockContext _context;
-        private readonly ILogger<V1Controller> _logger;
+        private readonly ILogger _logger;
 
         public V1Controller(
             StockContext context,
@@ -45,7 +45,7 @@ namespace DigitalThinkers_SSC.Controllers
                 }
                 else
                 {
-                    _logger.LogInformation("Added value with volume to the database: {value} {volume}", (stockValue, stock.Value));
+                    _logger.LogInformation($"Added value with volume to the database: {stockValue} {stock.Value}");
                     _context.StockItems.Add(new Stock() { Value = stockValue, Volume = stock.Value });
                     await _context.SaveChangesAsync();
                 }
@@ -152,6 +152,59 @@ namespace DigitalThinkers_SSC.Controllers
                 _logger.LogInformation("Checkout finished at: {time}. Stock insufficient.", DateTimeOffset.Now);
                 return BadRequest("Stock insufficient.");
             }
+        }
+
+        /*
+         * Return with an array containing the denominations the machine currently accepts.
+         * A bill or coin cannot be accepted if the machine would not be able to give back proper change.
+         */
+        [HttpGet]
+        public async Task<ActionResult> BlockedBills()
+        {
+            _logger.LogInformation("BlockedBills called at: {time}", DateTimeOffset.Now);
+            var listOfBillsAndCoins = new List<int>()
+            {
+                20000,
+                10000,
+                5000,
+                2000,
+                1000,
+                500,
+                200,
+                100,
+                50,
+                20,
+                10,
+                5 
+            };
+
+            /*
+             * Stock in the machine, sorted in decreasing order.
+             * Then check if the volume of the bills and coins are all zero.
+             */
+            var stockItems = _context.StockItems.ToArray();
+            Array.Sort(stockItems, (a, b) => b.Value.CompareTo(a.Value));
+            var isAllZeros = !stockItems.Select(s => s.Volume).Any(v => v != 0);
+
+            if(isAllZeros)
+            {
+                _logger.LogInformation("Checkout finished at: {time}. The machine's stock is empty.", DateTimeOffset.Now);
+                return CreatedAtAction(nameof(BlockedBills), new List<string>());
+            }
+
+            var sum = stockItems.Select(s => s.Value * s.Volume).Sum();
+
+            for (int i = listOfBillsAndCoins.Count -1; i >= 0; i--)
+            {
+                if(listOfBillsAndCoins[i] > sum)
+                {
+                    _logger.LogInformation("Removed {value} from the list of possible denominations.", listOfBillsAndCoins[i]);
+                    listOfBillsAndCoins.Remove(listOfBillsAndCoins[i]);
+                }
+            }
+
+            _logger.LogInformation("Checkout finished at: {time}. Returned the list of possible denominations.", DateTimeOffset.Now);
+            return CreatedAtAction(nameof(BlockedBills), listOfBillsAndCoins.Select(bas => bas.ToString()));
         }
     }
 }
