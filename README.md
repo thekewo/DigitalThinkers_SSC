@@ -1,6 +1,7 @@
 # DigitalThinkers_SSC
 
-DigitalThinkers_SSC is a .NET test exercise. The app stores the currently available currency in memory.
+DigitalThinkers_SSC is a .NET test exercise. The application simulates a self-checkout machine in a supermarket, which can be restocked,
+and calculates which bills and coins should it give back as change when used. It stores the currently available currency in memory.
 
 ## Usage
 
