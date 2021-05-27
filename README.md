@@ -4,7 +4,7 @@ DigitalThinkers_SSC is a .NET test exercise. The application simulates a self-ch
 and calculates which bills and coins should it give back as change when used. It stores the currently available currency in memory.
 
 ## Usage
-
+>Target framework: .NET 5.0
 After starting the application, it will listen to these post and get requests:
 
 ### PostStock
