@@ -5,6 +5,7 @@ and calculates which bills and coins should it give back as change when used. It
 
 ## Usage
 >Target framework: .NET 5.0
+
 After starting the application, it will listen to these post and get requests:
 
 ### PostStock
