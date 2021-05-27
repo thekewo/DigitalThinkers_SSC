@@ -1,0 +1,15 @@
+{
+  "version": 2,
+  "dgSpecHash": "YY9UQXzwcdKGcr3+qg4AefXqkroXh5mdDZZYG7LOiefbsJPCqUNeEP1BBgcDBZCbFZSYkqbBCMZx1nwFNng18w==",
+  "success": true,
+  "projectFilePath": "E:\\DigitalThinkers_SSC\\DigitalThinkers_SSC\\DigitalThinkers_SSC.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Koós Zoltán\\.nuget\\packages\\microsoft.extensions.apidescription.server\\3.0.0\\microsoft.extensions.apidescription.server.3.0.0.nupkg.sha512",
+    "C:\\Users\\Koós Zoltán\\.nuget\\packages\\microsoft.openapi\\1.2.3\\microsoft.openapi.1.2.3.nupkg.sha512",
+    "C:\\Users\\Koós Zoltán\\.nuget\\packages\\swashbuckle.aspnetcore\\5.6.3\\swashbuckle.aspnetcore.5.6.3.nupkg.sha512",
+    "C:\\Users\\Koós Zoltán\\.nuget\\packages\\swashbuckle.aspnetcore.swagger\\5.6.3\\swashbuckle.aspnetcore.swagger.5.6.3.nupkg.sha512",
+    "C:\\Users\\Koós Zoltán\\.nuget\\packages\\swashbuckle.aspnetcore.swaggergen\\5.6.3\\swashbuckle.aspnetcore.swaggergen.5.6.3.nupkg.sha512",
+    "C:\\Users\\Koós Zoltán\\.nuget\\packages\\swashbuckle.aspnetcore.swaggerui\\5.6.3\\swashbuckle.aspnetcore.swaggerui.5.6.3.nupkg.sha512"
+  ],
+  "logs": []
+}
