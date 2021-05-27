@@ -18,6 +18,8 @@ namespace DigitalThinkers_SSC
 {
     public class Startup
     {
+        private readonly ILogger<Startup> _logger;
+
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
@@ -29,7 +31,9 @@ namespace DigitalThinkers_SSC
         {
             services.AddDbContext<StockContext>(opt =>
                                                opt.UseInMemoryDatabase("MoneyList"));
+            _logger.LogInformation("Added database context to services at: {time}", DateTimeOffset.Now);
             services.AddControllers();
+            _logger.LogInformation("Added controllers to services at: {time}", DateTimeOffset.Now);
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
@@ -47,6 +51,7 @@ namespace DigitalThinkers_SSC
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
+                _logger.LogInformation("Mapped controller endpoints at: {time}", DateTimeOffset.Now);
             });
         }
     }
