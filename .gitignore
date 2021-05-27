@@ -1,0 +1,5 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/DigitalThinkers_SSC/App_Data/DT_SSC_Database.mdf
