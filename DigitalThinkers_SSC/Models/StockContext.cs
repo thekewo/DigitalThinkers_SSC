@@ -6,13 +6,13 @@ using System.Threading.Tasks;
 
 namespace DigitalThinkers_SSC.Models
 {
-    public class MoneyContext : DbContext
+    public class StockContext : DbContext
     {
-        public MoneyContext(DbContextOptions<MoneyContext> options)
+        public StockContext(DbContextOptions<StockContext> options)
             : base(options)
         {
         }
 
-        public DbSet<Money> MoneyItems { get; set; }
+        public DbSet<Stock> StockItems { get; set; }
     }
 }

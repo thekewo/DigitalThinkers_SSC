@@ -27,7 +27,7 @@ namespace DigitalThinkers_SSC
 
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<MoneyContext>(opt =>
+            services.AddDbContext<StockContext>(opt =>
                                                opt.UseInMemoryDatabase("MoneyList"));
             services.AddControllers();
         }
@@ -46,7 +46,9 @@ namespace DigitalThinkers_SSC
 
             app.UseEndpoints(endpoints =>
             {
-                endpoints.MapControllers();
+                endpoints.MapControllerRoute(
+                    name: "default",
+                    pattern: "{controller=Home}/{action=Index}/{id?}");
             });
         }
     }
