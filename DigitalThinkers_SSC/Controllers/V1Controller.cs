@@ -21,7 +21,7 @@ namespace DigitalThinkers_SSC.Controllers
         }
 
         [HttpPost]
-        public async Task<Dictionary<string,int>> Stock(StockViewModel moneyViewModel)
+        public async Task<Dictionary<string,int>> PostStock(StockViewModel moneyViewModel)
         {
             foreach (var stock in moneyViewModel.inserted)
             {
@@ -40,6 +40,19 @@ namespace DigitalThinkers_SSC.Controllers
             }
 
             return moneyViewModel.inserted;
+        }
+
+        [HttpGet]
+        public async Task<Dictionary<string, int>> GetStock()
+        {
+            var stockList = await _context.StockItems.ToListAsync();
+            var stockDictionary = new Dictionary<string, int>();
+            foreach (var stock in stockList)
+            {
+                stockDictionary.Add(stock.Value.ToString(), stock.Volume);
+            }
+
+            return stockDictionary;
         }
     }
 }
