@@ -6,7 +6,7 @@ and calculates which bills and coins should it give back as change when used. It
 ## Usage
 >Target framework: .NET 5.0
 
-After starting the application, it will listen to these post and get requests:
+First you need to set the starting point to IIS Express. The application won't open a browser. For sending and receiving the HTTP requests I recommend using [Postman](https://www.postman.com/). The IIS Express will allow the application to listen to these post and get requests on https://localhost:44305:
 
 ### PostStock
 > The PostStock endpoint accepts a JSON in a POST request, with an object containing the bills and coins to be
