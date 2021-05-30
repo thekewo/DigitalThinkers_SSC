@@ -32,7 +32,7 @@ namespace DigitalThinkers_SSC.Controllers
          * If not then adds the value paired with it's volume.
          */
         [HttpPost]
-        public async Task<Dictionary<string,int>> PostStock(StockViewModel stockViewModel)
+        public async Task<Dictionary<string,int>> Stock(StockViewModel stockViewModel)
         {
             _logger.LogInformation("PostStock called at: {time}", DateTimeOffset.Now);
             foreach (var stock in stockViewModel.inserted)
@@ -59,7 +59,7 @@ namespace DigitalThinkers_SSC.Controllers
          * Returns the stored bill and coin list with their volume.
          */
         [HttpGet]
-        public async Task<Dictionary<string, int>> GetStock()
+        public async Task<Dictionary<string, int>> Stock()
         {
             _logger.LogInformation("GetStock called at: {time}", DateTimeOffset.Now);
             Dictionary<string, int> stockDictionary = ListToDictionary(await _context.StockItems.ToListAsync());
