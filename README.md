@@ -13,11 +13,11 @@ First you need to set the starting point to IIS Express. The application won't o
 ![](Images/PostmanCheckoutBody.PNG)
 
 ### PostStock
-> The PostStock endpoint accepts a JSON in a POST request, with an object containing the bills and coins to be
+> The POST stock endpoint accepts a JSON in a POST request, with an object containing the bills and coins to be
 loaded into the “machine” (HUF)
 
 ```bash
-POST /api/v1/PostStock
+POST /api/v1/stock
 ```
 Example usage of the PostStock endpoint:
 ```json
@@ -30,10 +30,10 @@ POST /api/v1/PostStock
 }
 ```
 ### Getstock 
-> The Getstock endpoint returns a 200 OK response, with the currently stored items in the response body.
+> The GET stock endpoint returns a 200 OK response, with the currently stored items in the response body.
 
 ```bash
-GET /api/v1/getstock
+GET /api/v1/stock
 ```
 ### Checkout 
 > The Checkout endpoint accepts the same object used in the POST request for the Stock endpoint, but this time the
